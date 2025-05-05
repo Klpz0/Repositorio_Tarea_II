@@ -4,6 +4,7 @@ nav:
   - Introducción: index.md
   - Método Numérico: explicacion.md
   - Código: codigo.md
+  - Documentación: ducu_codigo.md
 theme:
   name: material
 
@@ -11,5 +12,12 @@ markdown_extensions:
   - codehilite
   - pymdownx.highlight
   - pymdownx.arithmatex
+
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+
