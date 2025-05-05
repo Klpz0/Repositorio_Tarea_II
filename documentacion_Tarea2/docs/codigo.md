@@ -1,5 +1,6 @@
-#! /usr/bin/env python3
+# Código Fuente
 
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -79,3 +80,5 @@ def main():
 
 main()
 
+
+```
