@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="..">
-      
-      
-        <link rel="next" href="../ducu_codigo/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Método Numérico - Documentación - Cuadratura Gaussiana</title>
+        <title>Tutorial: Codigo de prueba - Documentación - Cuadratura Gaussiana</title>
       
     
     
@@ -64,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metodo-numerico-cuadratura-de-gauss-legendre" class="md-skip">
+        <a href="#tutorial-codigo-de-prueba" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Método Numérico
+              Tutorial: Codigo de prueba
             
           </span>
         </div>
@@ -215,32 +211,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Método Numérico
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../explicacion/" class="md-nav__link">
         
   
   
@@ -251,35 +225,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#polinomios-de-legendre" class="md-nav__link">
-    <span class="md-ellipsis">
-      Polinomios de Legendre
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -348,23 +293,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#polinomios-de-legendre" class="md-nav__link">
-    <span class="md-ellipsis">
-      Polinomios de Legendre
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -379,41 +307,105 @@
 
 
 
-<h1 id="metodo-numerico-cuadratura-de-gauss-legendre">Método Numérico: Cuadratura de Gauss-Legendre</h1>
-<p>La cuadratura de Gauss-Legendre permite calcular integrales de la forma:</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">\begin{equation}
-\int_{a}^{b} f(x) dx \approx \sum_{i=1}^{N} w_i f(x_i)
-\end{equation}</div>
-<script type="math/tex; mode=display">\begin{equation}
-\int_{a}^{b} f(x) dx \approx \sum_{i=1}^{N} w_i f(x_i)
-\end{equation}</script>
-</div>
-<p>Donde:</p>
-<ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">\( x_i \)</span><script type="math/tex">\( x_i \)</script></span>: nodos (raíces del polinomio de Legendre)</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">\( w_i \)</span><script type="math/tex">\( w_i \)</script></span>: pesos asociados</li>
-</ul>
-<p>En este caso, la integral se transforma de <span class="arithmatex"><span class="MathJax_Preview">\([0, \pi]\)</span><script type="math/tex">\([0, \pi]\)</script></span> al intervalo estándar <span class="arithmatex"><span class="MathJax_Preview">\([-1, 1]\)</span><script type="math/tex">\([-1, 1]\)</script></span>, y luego se aplican las fórmulas de cambio de variable para escalar los nodos y pesos.</p>
-<p>El método es particularmente eficiente para funciones suaves, aunque presenta desafíos en funciones oscilatorias como <span class="arithmatex"><span class="MathJax_Preview">\( \sin(x^2) \)</span><script type="math/tex">\( \sin(x^2) \)</script></span>.</p>
-<h2 id="polinomios-de-legendre">Polinomios de Legendre</h2>
-<p>Los polinomios de Legendre son un sistema de polinomios ortogonales que pueden ser definidos de manera recursiva. Tenemos:
-\begin{align}
-\forall (M, N) \in\mathbb N^2, \quad \int_{-1}^1 {\rm{d}}x P_N(x)P_M(x) = \frac{2\delta_{MN}}{2N+1}.
-\end{align}
-Note que los polinomios están definidos en el intervalo <span class="arithmatex"><span class="MathJax_Preview">[-1, 1]</span><script type="math/tex">[-1, 1]</script></span>.
-Los se definen empezando con
-\begin{align}
-P_0(x) = 1 \Rightarrow P_1(x) = x,
-\end{align}
-tal que los siguientes órdenes se generan con la regla de recursividad
-\begin{align}
-(N+1)P_{N+1}(x) = (2N+1)xP_N(x) -NP_{N-1}(x).
-\end{align}
-Alternativamente, los polinomios pueden ser definidos de manera iterativa bajo la regla (fórmula de Rodrigues)
-\begin{align}
-P_N(x) = \frac1{2^N N!}\frac{d^N}{dx^N}\left[(x^2-1)^N\right].
-\end{align}</p>
+<h1 id="tutorial-codigo-de-prueba">Tutorial: Codigo de prueba</h1>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussxw</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula los nodos y pesos para la cuadratura de Gauss-Legendre.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        N (int): Número de nodos a usar.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (x, w) donde `x` son los puntos de evaluación y `w` los pesos.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; x, w = gaussxw(4)</span>
+<span class="sd">        &gt;&gt;&gt; print(x)</span>
+<span class="sd">        [-0.86113631 -0.33998104  0.33998104  0.86113631]</span>
+<span class="sd">        &gt;&gt;&gt; print(w)</span>
+<span class="sd">        [0.34785485 0.65214515 0.65214515 0.34785485]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">legendre</span><span class="o">.</span><span class="n">leggauss</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussxwab</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Escala los nodos y pesos de la cuadratura desde el intervalo [-1, 1] al intervalo [a, b].</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        a (float): Límite inferior del intervalo de integración.</span>
+<span class="sd">        b (float): Límite superior del intervalo de integración.</span>
+<span class="sd">        x (np.ndarray): Nodos en [-1, 1].</span>
+<span class="sd">        w (np.ndarray): Pesos en [-1, 1].</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (xp, wp) nodos y pesos escalados a [a, b].</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; x, w = gaussxw(2)</span>
+<span class="sd">        &gt;&gt;&gt; xp, wp = gaussxwab(0, 1, x, w)</span>
+<span class="sd">        &gt;&gt;&gt; print(xp)</span>
+<span class="sd">        [0.21132487 0.78867513]</span>
+<span class="sd">        &gt;&gt;&gt; print(wp)</span>
+<span class="sd">        [0.5 0.5]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">wp</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">xp</span><span class="p">,</span> <span class="n">wp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">integrando</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función a integrar: sin(x²).</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        x (np.ndarray or float): Puntos donde evaluar la función.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray or float: Resultado de evaluar sin(x²).</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; integrando(np.pi)</span>
+<span class="sd">        0.4303012170000917</span>
+<span class="sd">        &gt;&gt;&gt; integrando(np.array([0, 1]))</span>
+<span class="sd">        array([0.        , 0.84147098])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ejecuta la integración para varios valores de N y genera un gráfico</span>
+<span class="sd">    del valor de la integral en función de N.</span>
+
+<span class="sd">    Este script grafica el valor de la integral de sin(x²) en el intervalo [0, π]</span>
+<span class="sd">    usando cuadratura de Gauss-Legendre con diferentes cantidades de nodos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">N_vals</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">integrales</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_vals</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">gaussxw</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">xp</span><span class="p">,</span> <span class="n">wp</span> <span class="o">=</span> <span class="n">gaussxwab</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">integral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">wp</span> <span class="o">*</span> <span class="n">integrando</span><span class="p">(</span><span class="n">xp</span><span class="p">))</span>
+        <span class="n">integrales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">integral</span><span class="p">)</span>
+
+    <span class="c1"># Mostrar gráfico</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_vals</span><span class="p">,</span> <span class="n">integrales</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">1.77245</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Referencia ~1.77245&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;N (número de nodos)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Valor de la integral&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Integral de sin(x²) con cuadratura de Gauss-Legendre&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 
 
 
