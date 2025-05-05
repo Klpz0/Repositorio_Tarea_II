@@ -12,7 +12,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../codigo/">
+        <link rel="next" href="../ducu_codigo/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -227,6 +227,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Método Numérico
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -239,28 +252,34 @@
 
       </a>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../codigo/" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    Código
-    
-  </span>
-  
 
-      </a>
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#polinomios-de-legendre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polinomios de Legendre
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -307,6 +326,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#polinomios-de-legendre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polinomios de Legendre
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -338,6 +374,24 @@
 </ul>
 <p>En este caso, la integral se transforma de <span class="arithmatex"><span class="MathJax_Preview">\([0, \pi]\)</span><script type="math/tex">\([0, \pi]\)</script></span> al intervalo estándar <span class="arithmatex"><span class="MathJax_Preview">\([-1, 1]\)</span><script type="math/tex">\([-1, 1]\)</script></span>, y luego se aplican las fórmulas de cambio de variable para escalar los nodos y pesos.</p>
 <p>El método es particularmente eficiente para funciones suaves, aunque presenta desafíos en funciones oscilatorias como <span class="arithmatex"><span class="MathJax_Preview">\( \sin(x^2) \)</span><script type="math/tex">\( \sin(x^2) \)</script></span>.</p>
+<h2 id="polinomios-de-legendre">Polinomios de Legendre</h2>
+<p>Los polinomios de Legendre son un sistema de polinomios ortogonales que pueden ser definidos de manera recursiva. Tenemos:
+\begin{align}
+\forall (M, N) \in\mathbb N^2, \quad \int_{-1}^1 {\rm{d}}x P_N(x)P_M(x) = \frac{2\delta_{MN}}{2N+1}.
+\end{align}
+Note que los polinomios están definidos en el intervalo <span class="arithmatex"><span class="MathJax_Preview">[-1, 1]</span><script type="math/tex">[-1, 1]</script></span>.
+Los se definen empezando con
+\begin{align}
+P_0(x) = 1 \Rightarrow P_1(x) = x,
+\end{align}
+tal que los siguientes órdenes se generan con la regla de recursividad
+\begin{align}
+(N+1)P_{N+1}(x) = (2N+1)xP_N(x) -NP_{N-1}(x).
+\end{align}
+Alternativamente, los polinomios pueden ser definidos de manera iterativa bajo la regla (fórmula de Rodrigues)
+\begin{align}
+P_N(x) = \frac1{2^N N!}\frac{d^N}{dx^N}\left[(x^2-1)^N\right].
+\end{align}</p>
 
 
 
