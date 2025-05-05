@@ -3,6 +3,7 @@ site_name: "Documentación - Cuadratura Gaussiana"
 nav:
   - Introducción: index.md
   - Método Numérico: explicacion.md
+  - Tutorial: tutorial.md
   - Documentación: ducu_codigo.md
 theme:
   name: material
